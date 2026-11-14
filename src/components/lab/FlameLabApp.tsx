@@ -187,6 +187,14 @@ export default function FlameLabApp() {
 
         {/* ---------- controls ---------- */}
         <aside className={s.panel}>
+          <div className={`${s.block} ${s.mInfo}`}>
+            <p className={s.note}>{result.reason}</p>
+            <div className={s.mAxes}>
+              <span className="chip">flow {flow} cm/s →</span>
+              <span className="chip">{gravity === 0 ? "0 g" : `${gravity} g ↓`}</span>
+              <span className="chip">buoyant draft {buoyantFlow(gravity).toFixed(0)} cm/s ↑</span>
+            </div>
+          </div>
           <div className={s.block}>
             <div className="eyebrow">1 · Sample material</div>
             <div className={s.mats}>

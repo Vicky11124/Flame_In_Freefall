@@ -386,6 +386,9 @@ export class TunnelEngine {
     if (!w || !h) return;
     this.renderer.setSize(w, h, false);
     this.camera.aspect = w / h;
+    // keep the whole tunnel in frame on narrow (portrait) screens by widening the vertical FOV
+    const a = w / h;
+    this.camera.fov = a < 1.2 ? Math.min(75, (2 * Math.atan(Math.tan((17 * Math.PI) / 180) * (1.6 / a)) * 180) / Math.PI) : 34;
     this.camera.updateProjectionMatrix();
     this.flameMat.uniforms.uScale.value = h * 0.9;
   }

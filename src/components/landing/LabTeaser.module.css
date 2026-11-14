@@ -114,11 +114,57 @@
   font-size: 13px;
 }
 @media (max-width: 760px) {
+  /* each material becomes a card with a 2x2 grid of habitats */
   .table {
-    overflow-x: auto;
+    border: none;
+    background: none;
+    display: grid;
+    gap: 10px;
   }
-  .head,
+  .head {
+    display: none;
+  }
   .row {
-    min-width: 640px;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    background: var(--bg);
+  }
+  .row:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+  .mat {
+    grid-column: 1 / -1;
+    padding: 12px 14px 8px;
+    font-size: 15px;
+    border-bottom: 1px solid var(--line);
+  }
+  .cell {
+    position: relative;
+    padding: 24px 12px 10px;
+    border-left: none;
+    border-top: 1px solid var(--line);
+  }
+  .cell:nth-child(2),
+  .cell:nth-child(3) {
+    border-top: none;
+  }
+  .cell:nth-child(odd) {
+    border-left: 1px solid var(--line);
+  }
+  .cell::before {
+    content: attr(data-env);
+    position: absolute;
+    top: 7px;
+    left: 12px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .cta {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
   }
 }

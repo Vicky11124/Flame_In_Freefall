@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { runs, byId, label, PHASE_COLOR, PHASE_LABEL, STATS, type Phase, type Run } from "@/lib/data";
 import { PSI_PER_ATM } from "@/lib/scenarios";
 import s from "./AtmosphereMap.module.css";
@@ -28,8 +28,18 @@ export interface MapProps {
 }
 
 export default function AtmosphereMap({ height = 460, target, phases, highlight, onPick, showGap = true, compact }: MapProps) {
-  const W = 1000, H = height;
-  const m = { l: compact ? 52 : 66, r: 18, t: 30, b: compact ? 38 : 48 };
+  // On phones the chart redraws with a narrower canvas so labels and dots stay legible.
+  const wrap = useRef<HTMLDivElement>(null);
+  const [narrow, setNarrow] = useState(false);
+  useEffect(() => {
+    const el = wrap.current;
+    if (!el) return;
+    const ro = new ResizeObserver(([e]) => setNarrow(e.contentRect.width < 600));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+  const W = narrow ? 480 : 1000, H = narrow ? Math.round(height * 0.9) : height;
+  const m = narrow ? { l: 46, r: 12, t: 30, b: 42 } : { l: compact ? 52 : 66, r: 18, t: 30, b: compact ? 38 : 48 };
   // rounded so server and browser Math.log agree during hydration
   const r2 = (v: number) => Math.round(v * 100) / 100;
   const x = (psi: number) => r2(m.l + ((Math.log(psi) - Math.log(X0)) / (Math.log(X1) - Math.log(X0))) * (W - m.l - m.r));
@@ -45,10 +55,10 @@ export default function AtmosphereMap({ height = 460, target, phases, highlight,
           // deterministic jitter so stacked identical conditions read as a cluster
           const j = ((i * 9301 + 49297) % 233280) / 233280 - 0.5;
           const k = ((i * 4271 + 1237) % 23328) / 23328 - 0.5;
-          return { r, px: r2(x(r.p! * PSI_PER_ATM) + j * 9), py: r2(y(r.o2!) + k * 7) };
+          return { r, px: r2(x(r.p! * PSI_PER_ATM) + j * (narrow ? 6 : 9)), py: r2(y(r.o2!) + k * 7) };
         }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [phases?.join(","), H]
+    [phases?.join(","), H, W]
   );
 
   const onMove = (e: React.PointerEvent) => {
@@ -57,7 +67,7 @@ export default function AtmosphereMap({ height = 460, target, phases, highlight,
     const sx = ((e.clientX - rect.left) / rect.width) * W;
     const sy = ((e.clientY - rect.top) / rect.height) * H;
     let best = null as null | (typeof pts)[number];
-    let bd = 18 * 18;
+    let bd = narrow ? 26 * 26 : 18 * 18;
     for (const p of pts) {
       const d = (p.px - sx) ** 2 + (p.py - sy) ** 2;
       if (d < bd) {
@@ -68,17 +78,18 @@ export default function AtmosphereMap({ height = 460, target, phases, highlight,
     setHover(best);
   };
 
-  const xt = [4.3, 8.2, 10.2, 14.7, 29.4, 44.1, 73.5];
-  const yt = [12, 15, 21, 30, 40, 60, 85, 100];
+  const xt = narrow ? [4.3, 8.2, 14.7, 29.4, 73.5] : [4.3, 8.2, 10.2, 14.7, 29.4, 44.1, 73.5];
+  const yt = narrow ? [12, 21, 30, 40, 60, 100] : [12, 15, 21, 30, 40, 60, 85, 100];
   const gapY = y(STATS.maxSolidO2);
 
   return (
-    <div className={s.wrap}>
+    <div ref={wrap} className={`${s.wrap} ${narrow ? s.narrow : ""}`}>
       <svg
         ref={svg}
         viewBox={`0 0 ${W} ${H}`}
         className={s.svg}
         onPointerMove={onMove}
+        onPointerDown={onMove}
         onPointerLeave={() => setHover(null)}
         onClick={() => hover && onPick?.(hover.r.inv)}
         style={{ cursor: hover && onPick ? "pointer" : "default" }}
@@ -103,10 +114,10 @@ export default function AtmosphereMap({ height = 460, target, phases, highlight,
           </g>
         ))}
         <text x={W - m.r} y={H - 6} className={s.axis} textAnchor="end">
-          Total pressure, psi (log) →
+          {narrow ? "Pressure, psi →" : "Total pressure, psi (log) →"}
         </text>
         <text x={10} y={m.t + 4} className={s.axis} transform={`rotate(90 10 ${m.t + 4})`}>
-          Oxygen, % by volume (log) →
+          {narrow ? "Oxygen % →" : "Oxygen, % by volume (log) →"}
         </text>
 
         {/* the gap: no solid-material flight data above this line */}
@@ -115,7 +126,7 @@ export default function AtmosphereMap({ height = 460, target, phases, highlight,
             <rect x={m.l} y={m.t} width={W - m.l - m.r} height={gapY - m.t} className={s.gap} />
             <line x1={m.l} x2={W - m.r} y1={gapY} y2={gapY} className={s.gapLine} />
             <text x={W - m.r - 8} y={gapY - 8} className={s.gapText} textAnchor="end">
-              no solid material burned above {STATS.maxSolidO2}% O2 in PSI flight data
+              {narrow ? `no solids burned above ${STATS.maxSolidO2}% O2` : `no solid material burned above ${STATS.maxSolidO2}% O2 in PSI flight data`}
             </text>
           </g>
         )}
@@ -129,7 +140,7 @@ export default function AtmosphereMap({ height = 460, target, phases, highlight,
             <rect key={i} x={px - 2.6} y={py - 2.6} width={5.2} height={5.2} fill="none" stroke={fill} strokeWidth={1}
               opacity={dim ? 0.08 : 0.75} />
           ) : (
-            <circle key={i} cx={px} cy={py} r={assumed ? 2.6 : 2.3} fill={assumed ? "none" : fill} stroke={assumed ? fill : "none"}
+            <circle key={i} cx={px} cy={py} r={(assumed ? 2.6 : 2.3) * (narrow ? 1.25 : 1)} fill={assumed ? "none" : fill} stroke={assumed ? fill : "none"}
               strokeWidth={1} opacity={dim ? 0.07 : assumed ? 0.45 : 0.72} />
           );
         })}
@@ -153,7 +164,7 @@ export default function AtmosphereMap({ height = 460, target, phases, highlight,
             <circle cx={x(target.psi)} cy={y(target.o2)} r={16} />
             <circle cx={x(target.psi)} cy={y(target.o2)} r={3} className={s.tdot} />
             <text x={x(target.psi) + 20} y={y(target.o2) + 22} className={s.ttext}>
-              {target.label ?? "Your scenario"} · {target.o2}% · {target.psi} psi
+              {narrow ? `${target.o2}% · ${target.psi} psi` : `${target.label ?? "Your scenario"} · ${target.o2}% · ${target.psi} psi`}
             </text>
           </g>
         )}

@@ -117,6 +117,12 @@
   display: none;
   padding: 7px 12px;
 }
+.labShort,
+.mScen,
+.bottomTabs,
+.doneWrap {
+  display: none;
+}
 
 /* ---------- body ---------- */
 .body {
@@ -681,5 +687,253 @@
 @media (max-width: 560px) {
   .coverage {
     grid-template-columns: 1fr;
+  }
+}
+
+/* =================== phones & small tablets =================== */
+@media (max-width: 900px) {
+  .tabs {
+    display: none;
+  }
+  .labLink {
+    display: inline-flex !important;
+  }
+  .labText {
+    display: none;
+  }
+  .labShort {
+    display: inline;
+  }
+  .topRight {
+    gap: 10px;
+  }
+  .main {
+    padding: 14px 14px 110px;
+  }
+
+  /* habitat strip */
+  .mScen {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin: 0 -14px 14px;
+    padding: 0 14px 4px;
+    scrollbar-width: none;
+  }
+  .mScen button {
+    flex: none;
+    scroll-snap-align: start;
+    display: grid;
+    justify-items: center;
+    gap: 3px;
+    min-width: 66px;
+    padding: 8px 6px;
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    background: var(--bg-1);
+    color: var(--ink-3);
+    font-size: 11px;
+  }
+  .mScen svg {
+    width: 22px;
+    height: 22px;
+  }
+  .mScen .mScenOn {
+    border-color: var(--ember);
+    color: var(--ember);
+    background: rgba(255, 176, 85, 0.07);
+  }
+  .mTune svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+  }
+  .mScen .mTune {
+    color: var(--ink);
+    border-color: var(--line-2);
+  }
+
+  /* side panel: full-screen sheet with a sticky "show results" */
+  .side {
+    bottom: 64px;
+  }
+  .doneWrap {
+    display: block;
+    position: sticky;
+    bottom: 0;
+    padding: 12px 18px;
+    background: var(--bg-1);
+    border-top: 1px solid var(--line);
+  }
+  .doneWrap :global(.btn) {
+    width: 100%;
+    justify-content: center;
+  }
+  .dials {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  /* hero */
+  .hero {
+    gap: 14px;
+  }
+  .heroIcon {
+    width: 46px;
+    height: 46px;
+  }
+  .heroR {
+    width: 100%;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .mini {
+    flex: 1;
+    min-width: 170px;
+  }
+  .stat .serif {
+    font-size: 17px;
+  }
+
+  /* coverage: compact 2x2 */
+  .coverage {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .cov {
+    gap: 8px;
+    padding: 8px;
+  }
+  .cov > div:first-child {
+    width: 48px !important;
+    height: 48px !important;
+  }
+  .covName {
+    font-size: 13px;
+  }
+  .covState {
+    font-size: 9.5px;
+  }
+
+  /* rank header */
+  .bar {
+    flex-wrap: wrap;
+  }
+  .bar h2 {
+    font-size: 26px;
+  }
+  .barBtns {
+    margin-left: auto;
+  }
+
+  /* podium: compact horizontal cards */
+  .podium {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .pod {
+    grid-template-columns: 72px 1fr;
+    grid-template-areas: "ring name" "ring short" "stack stack" "chip chip";
+    justify-items: start;
+    text-align: left;
+    column-gap: 14px;
+    row-gap: 6px;
+    padding: 14px 44px 14px 14px;
+  }
+  .pod > div:nth-child(2) {
+    grid-area: ring;
+    width: 72px !important;
+    height: 72px !important;
+    align-self: center;
+  }
+  .podName {
+    grid-area: name;
+    font-size: 24px;
+  }
+  .podShort {
+    grid-area: short;
+    -webkit-line-clamp: 2;
+  }
+  .pod .stack {
+    grid-area: stack;
+    width: 100%;
+  }
+  .pod :global(.chip) {
+    grid-area: chip;
+  }
+  .podTop {
+    left: auto;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+  .podScore {
+    font-size: 24px;
+  }
+  .row {
+    padding: 12px 2px;
+  }
+  .rowName b {
+    font-size: 18px;
+    white-space: normal;
+  }
+
+  /* app-style bottom tab bar */
+  .bottomTabs {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 45;
+    height: 64px;
+    padding-bottom: env(safe-area-inset-bottom);
+    background: rgba(11, 10, 9, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--line-2);
+  }
+  .bottomTabs button {
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    gap: 3px;
+    border: none;
+    background: none;
+    color: var(--ink-3);
+    font-size: 10px;
+    position: relative;
+  }
+  .bottomTabs svg {
+    width: 21px;
+    height: 21px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+  .bottomTabs .btOn {
+    color: var(--ember);
+  }
+  .bottomTabs .btOn::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 25%;
+    right: 25%;
+    height: 2px;
+    background: var(--flame);
+  }
+  .cmpDock {
+    bottom: 76px;
+    max-width: calc(100vw - 24px);
+    overflow-x: auto;
+  }
+  .mapCard {
+    padding: 8px;
   }
 }

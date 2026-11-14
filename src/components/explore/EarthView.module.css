@@ -134,3 +134,17 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 900px) {
+  .head h2 {
+    font-size: 26px;
+  }
+  .filter {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .filter button {
+    flex: none;
+  }
+}

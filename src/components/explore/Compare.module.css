@@ -111,3 +111,31 @@
   text-decoration: underline;
   font-size: 11px;
 }
+
+@media (max-width: 900px) {
+  .bar h2,
+  .empty h2 {
+    font-size: 26px;
+  }
+  .scroll {
+    margin: 0 -14px;
+    padding: 0 14px;
+  }
+  .t {
+    min-width: 560px;
+    font-size: 12.5px;
+  }
+  /* keep row labels visible while swiping across investigations */
+  .t th:first-child,
+  .t tbody th {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: var(--bg);
+    width: 96px !important;
+    padding-right: 8px;
+  }
+  .name .serif {
+    font-size: 22px;
+  }
+}

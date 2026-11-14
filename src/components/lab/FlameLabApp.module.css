@@ -533,10 +533,26 @@
     display: none;
   }
 }
+.mInfo {
+  display: none;
+}
+.mAxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+/* =================== phones & small tablets =================== */
 @media (max-width: 900px) {
   .app {
     height: auto;
     overflow: visible;
+  }
+  .top {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    padding: 0 14px;
   }
   .crumb,
   .nav a:not(:global(.btn)) {
@@ -545,30 +561,102 @@
   .body {
     grid-template-columns: 1fr;
   }
+  /* the 3D view stays on screen while you scroll the controls */
   .stage {
-    height: 72vh;
-    min-height: 480px;
-  }
-  .panel {
-    border-left: none;
+    position: sticky;
+    top: 56px;
+    z-index: 10;
+    height: 46vh;
+    min-height: 300px;
+    max-height: 460px;
+    border-bottom: 1px solid var(--line-2);
+    background: var(--bg);
   }
   .verdict {
-    max-width: calc(100% - 36px);
-    padding: 10px 12px;
+    top: 10px;
+    left: 10px;
+    max-width: calc(100% - 20px);
+    padding: 6px 10px;
+  }
+  .verdict .eyebrow {
+    font-size: 9.5px;
   }
   .vTitle {
-    font-size: 22px;
+    font-size: 19px;
+    margin: 2px 0 0;
   }
   .verdict p,
-  .axes {
+  .axes,
+  .hint,
+  .spark {
     display: none;
   }
   .hud {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px 14px;
-    bottom: 30px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 4px 8px;
+    padding: 7px 10px 12px;
   }
   .status {
-    grid-column: span 2;
+    grid-column: 1 / -1;
+    min-width: 0;
+    font-size: 11.5px;
+  }
+  .metric .mono {
+    font-size: 12.5px;
+  }
+  .metric :global(.eyebrow) {
+    font-size: 9px;
+    letter-spacing: 0.08em;
+  }
+  .track {
+    left: 10px;
+    right: 10px;
+    bottom: 5px;
+  }
+  .panel {
+    border-left: none;
+    padding-bottom: 84px;
+  }
+  .mInfo {
+    display: grid;
+    background: var(--bg-2);
+  }
+  .mats {
+    grid-template-columns: 1fr 1fr;
+  }
+  /* run controls pinned to the bottom of the screen */
+  .runBlock {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 40;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(17, 15, 13, 0.96);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid var(--line-2);
+    border-bottom: none;
+  }
+  .ignite {
+    padding: 13px 10px;
+    font-size: 12px;
+  }
+  .runRow {
+    grid-template-columns: auto auto;
+  }
+  .runRow :global(.btn) {
+    padding: 11px 10px;
+  }
+  .speed button {
+    padding: 9px 7px;
+  }
+  .seg4 b {
+    font-size: 12px;
   }
 }

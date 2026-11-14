@@ -35,7 +35,7 @@ export default function LabTeaser() {
               const r = evaluate({ material: m, o2: e.o2, psi: e.psi, flow: e.flow, direction: "concurrent", gravity: e.g });
               const cls = !r.burns ? s.no : r.verdict === "Near-limit flame" ? s.weak : r.verdict === "Burns vigorously" ? s.vig : s.yes;
               return (
-                <span key={e.l} className={`${s.cell} ${cls}`} role="cell" title={r.reason}>
+                <span key={e.l} className={`${s.cell} ${cls}`} role="cell" title={r.reason} data-env={e.l}>
                   <span className={s.flame} />
                   {r.burns ? (r.verdict === "Near-limit flame" ? "barely" : `${r.spread.toFixed(1)} mm/s`) : "out"}
                 </span>

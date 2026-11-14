@@ -152,3 +152,30 @@
   gap: 6px;
   margin-top: 10px;
 }
+
+/* ---------- phones: bigger type in the narrow canvas, tooltip pinned to the top ---------- */
+.narrow .tick {
+  font-size: 15px;
+}
+.narrow .axis {
+  font-size: 13px;
+}
+.narrow .gapText {
+  font-size: 14px;
+}
+.narrow .atmoText {
+  font-size: 19px;
+}
+.narrow .ttext {
+  font-size: 15px;
+}
+.narrow .tip {
+  left: 6px !important;
+  right: 6px;
+  top: 6px !important;
+  transform: none !important;
+  max-width: none;
+}
+.narrow .legend :global(.chip) {
+  font-size: 10.5px;
+}

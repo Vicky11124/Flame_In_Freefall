@@ -25,6 +25,14 @@ const PARTS = [
   { k: "relevance", l: "Material match", w: 20, c: "var(--c-solid)" },
   { k: "evidence", l: "Evidence strength", w: 20, c: "var(--ink-3)" },
 ] as const;
+const TAB_ICON: Record<Tab, React.ReactNode> = {
+  rank: <path d="M4 20V10M10 20V4M16 20v-7M22 20H2" />,
+  map: <><circle cx="7" cy="15" r="1.6" /><circle cx="12" cy="9" r="1.6" /><circle cx="17" cy="13" r="1.6" /><path d="M3 3v18h18" /></>,
+  network: <><circle cx="6" cy="7" r="2.5" /><circle cx="18" cy="7" r="2.5" /><circle cx="12" cy="18" r="2.5" /><path d="M8 8.5l3 7.5M16 8.5l-3 7.5M8.5 7h7" /></>,
+  compare: <><rect x="3" y="4" width="7" height="16" rx="1" /><rect x="14" y="4" width="7" height="16" rx="1" /></>,
+  earth: <><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" /></>,
+  ask: <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z" />,
+};
 const PHASE_SHORT: Record<Phase, string> = { solid: "Solids", liquid: "Liquids", gas: "Gases", aerosol: "Smoke" };
 
 export default function Explorer() {
@@ -163,7 +171,8 @@ export default function Explorer() {
         </nav>
         <div className={s.topRight}>
           <Link href="/lab" className={s.labLink}>
-            <span className={s.liveDot} /> Flame Lab
+            <span className={s.liveDot} /> <span className={s.labText}>Flame Lab</span>
+            <span className={s.labShort}>Lab</span>
           </Link>
           <button className={s.iconBtn} onClick={share} title="Copy a link to this view">
             <svg viewBox="0 0 20 20" aria-hidden>
@@ -243,10 +252,32 @@ export default function Explorer() {
               ))}
             </div>
           </div>
+          <div className={s.doneWrap}>
+            <button className="btn btn-hot" onClick={() => setMenu(false)}>
+              Show results →
+            </button>
+          </div>
         </aside>
 
         {/* ------------ main ------------ */}
         <main className={s.main}>
+          <div className={s.mScen} role="group" aria-label="Choose habitat">
+            {SCENARIOS.map((sc) => (
+              <button key={sc.id} className={sc.id === scenarioId ? s.mScenOn : ""} onClick={() => pick(sc.id)}>
+                <ScenarioIcon id={sc.id} />
+                <span>{sc.name.split(" ")[0].replace("/", "")}</span>
+              </button>
+            ))}
+            <button className={s.mTune} onClick={() => setMenu(true)}>
+              <svg viewBox="0 0 24 24" aria-hidden>
+                <path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12" />
+                <circle cx="16" cy="6" r="2" />
+                <circle cx="10" cy="12" r="2" />
+                <circle cx="18" cy="18" r="2" />
+              </svg>
+              <span>Tune</span>
+            </button>
+          </div>
           <section className={s.hero}>
             <div className={s.heroL}>
               <div className={s.heroIcon}>
@@ -401,6 +432,25 @@ export default function Explorer() {
           {tab === "ask" && <Analyst scenario={scenarioCtx} ranked={ranked} seed={askSeed} onSeedUsed={() => setAskSeed(null)} onOpen={setOpen} />}
         </main>
       </div>
+
+      <nav className={s.bottomTabs} aria-label="Dashboard sections">
+        {TABS.map((k) => (
+          <button
+            key={k}
+            className={tab === k ? s.btOn : ""}
+            onClick={() => {
+              setTab(k);
+              setMenu(false);
+              window.scrollTo({ top: 0 });
+            }}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden>
+              {TAB_ICON[k]}
+            </svg>
+            <span>{k === "compare" && cmp.length ? `Compare ${cmp.length}` : k === "ask" ? "Ask AI" : k[0].toUpperCase() + k.slice(1)}</span>
+          </button>
+        ))}
+      </nav>
 
       {open && (
         <Drawer id={open} onClose={() => setOpen(null)} onOpen={setOpen} inCompare={cmp.includes(open)} onCompare={() => toggleCmp(open)} target={{ o2, psi }} />

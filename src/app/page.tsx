@@ -44,7 +44,8 @@ export default function Landing() {
               <span className={s.liveDot} /> Flame Lab
             </Link>
             <Link href="/explore" className="btn btn-hot">
-              Open dashboard <span aria-hidden>→</span>
+              <span className={s.long}>Open dashboard</span>
+              <span className={s.short}>Dashboard</span> <span aria-hidden>→</span>
             </Link>
           </nav>
         </div>

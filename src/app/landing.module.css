@@ -360,9 +360,18 @@
     border-right: none;
   }
 }
+.short {
+  display: none;
+}
 @media (max-width: 900px) {
-  .links a:not(:global(.btn)) {
+  .links a:not(:global(.btn)):not(.labLink) {
     display: none;
+  }
+  .links {
+    gap: 14px;
+  }
+  .labLink {
+    font-size: 13px;
   }
   .hero {
     grid-template-columns: 1fr;
@@ -411,5 +420,57 @@
   .feature {
     border-right: none;
     margin-right: 0;
+  }
+}
+
+/* ---------- phones ---------- */
+@media (max-width: 560px) {
+  .long {
+    display: none;
+  }
+  .short {
+    display: inline;
+  }
+  .brand > span {
+    font-size: 14px;
+  }
+  .links :global(.btn) {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+  .h1 {
+    font-size: 44px;
+  }
+  .lede {
+    font-size: 16px;
+  }
+  .ctas :global(.btn) {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+  .section {
+    padding: 64px 0;
+  }
+  .head {
+    margin-bottom: 28px;
+  }
+  .year {
+    font-size: 48px;
+  }
+  .gallery {
+    grid-auto-rows: 240px;
+  }
+  .insStat {
+    font-size: 36px;
+  }
+  .feature h3 {
+    font-size: 32px;
+  }
+  .ctaH {
+    font-size: 40px;
+  }
+  .cta :global(.btn) {
+    width: 100%;
+    justify-content: center;
   }
 }

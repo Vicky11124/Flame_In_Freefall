@@ -178,3 +178,28 @@
   opacity: 0.5;
   cursor: default;
 }
+
+@media (max-width: 900px) {
+  .head {
+    flex-wrap: wrap;
+  }
+  .head h2 {
+    font-size: 26px;
+  }
+  .suggest button {
+    font-size: 17px;
+    padding: 12px 0;
+  }
+  .user {
+    max-width: 92%;
+  }
+  .model {
+    padding-left: 12px;
+  }
+  .form {
+    bottom: 76px;
+  }
+  .form textarea {
+    font-size: 16px; /* stops iOS zooming into the field */
+  }
+}
