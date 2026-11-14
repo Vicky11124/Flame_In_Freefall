@@ -1,0 +1,14 @@
+{
+ "PSI-10": [
+  {"src": "/psi/PSI-10-1.jpg", "caption": "Nine ACME Flame Design flames: soot-free blue to sooty yellow"},
+  {"src": "/psi/PSI-10-0.jpg", "caption": "Burning soot streaks around a spherical burner"},
+  {"src": "/psi/PSI-10-2.jpg", "caption": "Crew installing ACME hardware in the Combustion Integrated Rack"}
+ ],
+ "PSI-159": [{"src": "/psi/PSI-159-1.jpg", "caption": "CFI-G spherical flame from a porous burner"}],
+ "PSI-22": [
+  {"src": "/psi/PSI-22-1.jpg", "caption": "E-FIELD flame in microgravity, no field applied"},
+  {"src": "/psi/PSI-22-2.jpg", "caption": "Electric field drags ions, making a teardrop flame in orbit"}
+ ],
+ "PSI-25": [{"src": "/psi/PSI-25-0.jpg", "caption": "BASS-II acrylic rod burning in fan-driven flow"}],
+ "PSI-47": [{"src": "/psi/PSI-47-0.jpg", "caption": "DAFT DustTrak sampling cabin air aboard the ISS"}]
+}

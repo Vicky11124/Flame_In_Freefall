@@ -1,0 +1,124 @@
+.wrap {
+  display: grid;
+  gap: 22px;
+  justify-items: start;
+}
+.table {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  overflow: hidden;
+  background: var(--bg);
+}
+.head,
+.row {
+  display: grid;
+  grid-template-columns: 1.3fr repeat(4, minmax(0, 1fr));
+}
+.head span {
+  padding: 12px 14px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  border-bottom: 1px solid var(--line-2);
+  display: grid;
+  gap: 2px;
+}
+.head b {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--ink);
+}
+.head em {
+  font-style: normal;
+}
+.row {
+  border-bottom: 1px solid var(--line);
+  transition: background 0.2s;
+}
+.row:last-child {
+  border-bottom: none;
+}
+.row:hover {
+  background: rgba(239, 232, 220, 0.03);
+}
+.mat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  font-size: 14.5px;
+}
+.mat i {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  flex: none;
+}
+.cell {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 14px;
+  font-family: var(--mono);
+  font-size: 12px;
+  border-left: 1px solid var(--line);
+}
+.flame {
+  width: 12px;
+  height: 16px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  flex: none;
+}
+.no {
+  color: var(--ink-3);
+}
+.no .flame {
+  background: transparent;
+  border: 1px dashed var(--ink-3);
+}
+.weak {
+  color: var(--ember);
+}
+.weak .flame {
+  background: radial-gradient(circle at 50% 70%, var(--ug), transparent 70%);
+  animation: flick 1.6s ease-in-out infinite;
+}
+.yes {
+  color: var(--flame);
+}
+.yes .flame {
+  background: radial-gradient(circle at 50% 75%, #fff2c8, var(--flame) 55%, transparent 72%);
+  animation: flick 0.9s ease-in-out infinite;
+}
+.vig {
+  color: var(--warn);
+  background: rgba(255, 77, 61, 0.06);
+}
+.vig .flame {
+  background: radial-gradient(circle at 50% 75%, #fff, var(--warn) 50%, transparent 72%);
+  animation: flick 0.5s ease-in-out infinite;
+}
+@keyframes flick {
+  50% {
+    transform: scaleY(1.18) scaleX(0.92);
+    opacity: 0.8;
+  }
+}
+.cta {
+  font-size: 13px;
+}
+@media (max-width: 760px) {
+  .table {
+    overflow-x: auto;
+  }
+  .head,
+  .row {
+    min-width: 640px;
+  }
+}

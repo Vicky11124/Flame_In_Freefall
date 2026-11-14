@@ -1,0 +1,156 @@
+/* dial */
+.dial {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+}
+.dial svg {
+  width: 112px;
+  height: 112px;
+  touch-action: none;
+  cursor: grab;
+  outline: none;
+}
+.dial svg:focus-visible .knob {
+  stroke-width: 3;
+}
+.track {
+  fill: none;
+  stroke: var(--bg-3);
+  stroke-width: 7;
+  stroke-linecap: round;
+}
+.fill {
+  fill: none;
+  stroke-width: 7;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 4px rgba(255, 140, 60, 0.4));
+}
+.mark {
+  stroke: var(--ink-3);
+  stroke-width: 1;
+}
+.knob {
+  fill: var(--bg);
+  stroke-width: 2;
+}
+.val {
+  fill: var(--ink);
+  font-family: var(--serif);
+  font-size: 24px;
+}
+.unit {
+  fill: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.dialLabel {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.dialMarks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3px;
+  margin-top: 4px;
+}
+.dialMarks button {
+  padding: 2px 6px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: none;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  color: var(--ink-3);
+}
+.dialMarks button:hover {
+  color: var(--ink);
+}
+.markOn {
+  border-color: var(--ember) !important;
+  color: var(--ember) !important;
+}
+
+/* gauge */
+.gauge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.gauge svg {
+  width: 140px;
+  height: 84px;
+}
+.zone {
+  fill: none;
+  stroke-width: 10;
+}
+.zLow {
+  stroke: rgba(106, 168, 255, 0.45);
+}
+.zOk {
+  stroke: rgba(159, 212, 138, 0.6);
+}
+.zMid {
+  stroke: rgba(255, 176, 85, 0.7);
+}
+.zHigh {
+  stroke: rgba(255, 77, 61, 0.75);
+}
+.needle {
+  stroke: var(--ink);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  transition: all 0.5s cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+.hub {
+  fill: var(--ink);
+}
+.gTick {
+  fill: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 8px;
+}
+.gRead {
+  display: grid;
+}
+.gRead .serif {
+  font-size: 40px;
+  line-height: 1;
+}
+
+/* ring */
+.ring {
+  position: relative;
+  flex: none;
+}
+.ring svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+.ringBg {
+  fill: none;
+  stroke: var(--bg-3);
+  stroke-width: 5;
+}
+.ringFg {
+  fill: none;
+  stroke-width: 5;
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.ringIn {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--mono);
+  font-size: 12px;
+}

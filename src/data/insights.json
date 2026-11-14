@@ -1,0 +1,42 @@
+[
+ {
+  "inv": "PSI-69",
+  "text": "FLEX droplets in CO2-diluted air: 88/123 tests ended in flame extinction.",
+  "stat": "72%"
+ },
+ {
+  "inv": "PSI-69",
+  "text": "FLEX droplets in He-diluted air: 40/50 tests ended in flame extinction.",
+  "stat": "80%"
+ },
+ {
+  "inv": "PSI-69",
+  "text": "FLEX droplets in N2-diluted air: 58/101 tests ended in flame extinction.",
+  "stat": "57%"
+ },
+ {
+  "inv": "PSI-69",
+  "text": "Liquid droplets sustained a flame down to 12% O2 in microgravity.",
+  "stat": "12% O2"
+ },
+ {
+  "inv": "PSI-25",
+  "text": "BASS-II solids were burned while O2 was bled down to 13.5% - well below Earth air.",
+  "stat": "13.5% O2"
+ },
+ {
+  "inv": "PSI-159",
+  "text": "CFI-G pushed oxidizer to 85% O2; 263 of 333 attempts produced a hot flame.",
+  "stat": "85% O2"
+ },
+ {
+  "inv": "PSI-99",
+  "text": "Saffire-II: 2 silicone samples burned completely in the 1-g test yet did not spread in microgravity at 20 cm/s - 1-g screening is not always the worst case.",
+  "stat": "2/9"
+ },
+ {
+  "inv": "PSI-107",
+  "text": "SPICE logged 435 jet-flame points across 7 fuels to map when flames start shedding smoke.",
+  "stat": "435"
+ }
+]

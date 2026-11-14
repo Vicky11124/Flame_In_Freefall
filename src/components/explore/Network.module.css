@@ -1,0 +1,125 @@
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.head h2 {
+  font-size: 32px;
+  font-weight: 400;
+  margin: 0;
+}
+.legend {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.stage {
+  position: relative;
+  border: 1px solid var(--line);
+  background: radial-gradient(ellipse at 50% 40%, rgba(255, 176, 85, 0.05), transparent 65%), var(--bg-1);
+}
+.svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.hull {
+  fill: rgba(239, 232, 220, 0.02);
+  stroke: var(--line-2);
+  stroke-dasharray: 3 5;
+}
+.hullText {
+  fill: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.link {
+  fill: none;
+  stroke: var(--ink-3);
+  stroke-width: 1.2;
+  opacity: 0.55;
+  transition: opacity 0.2s;
+}
+.linkOn {
+  stroke: var(--ember);
+  stroke-width: 2;
+  opacity: 1;
+  stroke-dasharray: 6 4;
+  animation: dash 0.8s linear infinite;
+}
+@keyframes dash {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+.node {
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.dotC {
+  stroke: var(--bg);
+  stroke-width: 2;
+  transition: transform 0.2s;
+}
+.node:hover .dotC {
+  transform: scale(1.25);
+}
+.topRing {
+  fill: none;
+  stroke: var(--ember);
+  stroke-width: 1.5;
+  animation: ring 2.2s ease-in-out infinite;
+}
+@keyframes ring {
+  50% {
+    stroke-opacity: 0.3;
+  }
+}
+.nodeText {
+  fill: var(--ink);
+  font-family: var(--mono);
+  font-size: 11px;
+  paint-order: stroke;
+  stroke: var(--bg-1);
+  stroke-width: 4px;
+  pointer-events: none;
+}
+.dim {
+  opacity: 0.15;
+}
+.tip {
+  position: absolute;
+  transform: translate(18px, -50%);
+  width: 260px;
+  padding: 12px 14px;
+  background: var(--bg-2);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r);
+  pointer-events: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+.tip .serif {
+  font-size: 24px;
+  line-height: 1.1;
+  margin: 4px 0;
+}
+.tip p {
+  margin: 0 0 6px;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+.tip .mono {
+  font-size: 11px;
+  color: var(--ink-3);
+}
+.foot {
+  margin: 10px 0 0;
+  font-size: 12.5px;
+  color: var(--ink-3);
+}

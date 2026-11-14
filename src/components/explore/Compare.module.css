@@ -1,0 +1,113 @@
+.empty {
+  padding: 60px 0;
+  display: grid;
+  gap: 14px;
+  justify-items: start;
+}
+.empty h2 {
+  font-size: 40px;
+  font-weight: 400;
+  margin: 0;
+}
+.empty p {
+  margin: 0;
+  color: var(--ink-2);
+}
+.quick {
+  display: flex;
+  gap: 6px;
+}
+.bar {
+  margin-bottom: 16px;
+}
+.bar h2 {
+  font-size: 32px;
+  font-weight: 400;
+  margin: 0 0 4px;
+}
+.bar p {
+  margin: 0;
+  color: var(--ink-3);
+  font-size: 13.5px;
+}
+.scroll {
+  overflow-x: auto;
+}
+.t {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+  font-size: 13.5px;
+}
+.t th,
+.t td {
+  text-align: left;
+  vertical-align: top;
+  padding: 11px 14px 11px 0;
+  border-bottom: 1px solid var(--line);
+}
+.t thead th {
+  border-bottom: 1px solid var(--line-2);
+  padding-bottom: 14px;
+  width: 30%;
+}
+.t thead th:first-child {
+  width: 150px;
+}
+.t tbody th {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  font-weight: 400;
+}
+.t td {
+  color: var(--ink-2);
+}
+.diff {
+  color: var(--ink) !important;
+  box-shadow: inset 2px 0 0 var(--flame);
+  padding-left: 10px !important;
+}
+.name {
+  border: none;
+  background: none;
+  padding: 0;
+  display: grid;
+  text-align: left;
+}
+.name .serif {
+  font-size: 28px;
+  line-height: 1.05;
+}
+.name:hover .serif {
+  color: var(--ember);
+}
+.name .mono {
+  font-size: 11px;
+  color: var(--ink-3);
+  font-weight: 400;
+}
+.sc {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--ink-3);
+}
+.sc b {
+  color: var(--ember);
+  font-weight: 500;
+}
+.sc button {
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--ink-3);
+  text-decoration: underline;
+  font-size: 11px;
+}

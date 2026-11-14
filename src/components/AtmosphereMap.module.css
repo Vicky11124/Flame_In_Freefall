@@ -1,0 +1,154 @@
+.wrap {
+  position: relative;
+  width: 100%;
+}
+.svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  user-select: none;
+}
+.grid {
+  stroke: var(--line);
+  stroke-width: 1;
+}
+.grid21 {
+  stroke: var(--line-2);
+  stroke-dasharray: 3 4;
+}
+.tick {
+  fill: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 11px;
+}
+.axis {
+  fill: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.gap {
+  fill: url(#none);
+  fill: rgba(255, 77, 61, 0.035);
+}
+.gapLine {
+  stroke: var(--warn);
+  stroke-width: 1;
+  stroke-dasharray: 6 5;
+  opacity: 0.8;
+}
+.gapText {
+  fill: var(--warn);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+}
+.atmo text {
+  pointer-events: none;
+}
+.now {
+  fill: var(--bg);
+  stroke: var(--ink);
+  stroke-width: 1.5;
+}
+.future {
+  fill: var(--bg);
+  stroke: var(--ember);
+  stroke-width: 2;
+}
+.past {
+  fill: var(--bg);
+  stroke: var(--warn);
+  stroke-width: 1.5;
+  stroke-dasharray: 2 2;
+}
+.atmoText {
+  fill: var(--ink);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  paint-order: stroke;
+  stroke: var(--bg);
+  stroke-width: 4px;
+}
+.target line {
+  stroke: var(--ember);
+  stroke-width: 1;
+  stroke-dasharray: 2 4;
+}
+.target circle {
+  fill: none;
+  stroke: var(--ember);
+  stroke-width: 1.5;
+  animation: pulse 2.4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.target .tdot {
+  fill: var(--ember);
+  animation: none;
+}
+.ttext {
+  fill: var(--ember);
+  font-family: var(--mono);
+  font-size: 12px;
+  paint-order: stroke;
+  stroke: var(--bg);
+  stroke-width: 4px;
+}
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.4;
+  }
+}
+.hoverRing {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.5;
+}
+.tip {
+  position: absolute;
+  transform: translate(14px, -50%);
+  min-width: 190px;
+  max-width: 260px;
+  padding: 10px 12px;
+  background: var(--bg-2);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r);
+  pointer-events: none;
+  font-size: 12.5px;
+  z-index: 5;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+.tipFuel {
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.2;
+  margin: 4px 0;
+}
+.tipOut {
+  margin-top: 4px;
+  color: var(--ember);
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.tipNote {
+  margin-top: 4px;
+  color: var(--ink-3);
+  font-size: 11px;
+}
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
