@@ -1,0 +1,211 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  pointer-events: all;
+  overflow: hidden;
+}
+
+/* ---------- doors ---------- */
+.door {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50.5vw;
+  background-color: #0d0b0a;
+  background-image: linear-gradient(rgba(239, 232, 220, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(239, 232, 220, 0.045) 1px, transparent 1px);
+  background-size: 32px 32px;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.8);
+  will-change: transform;
+}
+.left {
+  left: 0;
+  transform: translateX(-102%);
+}
+.right {
+  right: 0;
+  transform: translateX(102%);
+}
+/* hot leading edge of each door */
+.edge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, transparent, var(--ember) 20%, var(--flame) 50%, var(--ember) 80%, transparent);
+  box-shadow: 0 0 18px 4px rgba(255, 106, 43, 0.55), 0 0 60px 12px rgba(255, 106, 43, 0.25);
+}
+.left .edge {
+  right: 0;
+}
+.right .edge {
+  left: 0;
+}
+
+/* ---------- seam + emblem (appear when the doors meet) ---------- */
+.seam {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 160px;
+  transform: translateX(-50%);
+  opacity: 0;
+  background: radial-gradient(ellipse 22% 60% at 50% 50%, rgba(255, 200, 120, 0.9), rgba(255, 106, 43, 0.35) 45%, transparent 75%);
+  mix-blend-mode: screen;
+  filter: blur(2px);
+}
+.emblem {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 84px;
+  height: 84px;
+  margin: -42px 0 0 -42px;
+  opacity: 0;
+  transform: scale(0.6);
+}
+.emblem svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.ring {
+  fill: #0d0b0a;
+  stroke: var(--ug);
+  stroke-width: 1.2;
+}
+.outer {
+  fill: var(--flame);
+  transform-origin: 20px 27px;
+  animation: flick 0.32s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 6px rgba(255, 106, 43, 0.9));
+}
+.inner {
+  fill: #ffe2a8;
+  transform-origin: 20px 24px;
+  animation: flick 0.22s ease-in-out infinite alternate-reverse;
+}
+@keyframes flick {
+  0% {
+    transform: scale(1, 1) skewX(0deg);
+  }
+  50% {
+    transform: scale(0.94, 1.08) skewX(-3deg);
+  }
+  100% {
+    transform: scale(1.04, 0.95) skewX(3deg);
+  }
+}
+
+/* ---------- stages ---------- */
+.closing .left,
+.closing .right {
+  animation: shut 0.52s cubic-bezier(0.7, 0, 0.25, 1) forwards;
+}
+.closed .left,
+.closed .right {
+  transform: translateX(0);
+}
+.opening .left {
+  animation: openL 0.7s cubic-bezier(0.65, 0, 0.2, 1) forwards;
+}
+.opening .right {
+  animation: openR 0.7s cubic-bezier(0.65, 0, 0.2, 1) forwards;
+}
+@keyframes shut {
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes openL {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-102%);
+  }
+}
+@keyframes openR {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(102%);
+  }
+}
+
+/* impact flash when the doors meet, then a steady burn */
+.closing .seam {
+  animation: seamIn 0.52s ease-in forwards;
+}
+.closed .seam {
+  opacity: 1;
+  animation: burn 0.5s ease-in-out infinite alternate;
+}
+.opening .seam {
+  animation: seamOut 0.35s ease-out forwards;
+}
+@keyframes seamIn {
+  0%,
+  80% {
+    opacity: 0;
+    width: 40px;
+  }
+  92% {
+    opacity: 1;
+    width: 360px;
+  }
+  100% {
+    opacity: 1;
+    width: 160px;
+  }
+}
+@keyframes burn {
+  from {
+    opacity: 0.85;
+    width: 150px;
+  }
+  to {
+    opacity: 1;
+    width: 190px;
+  }
+}
+@keyframes seamOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    width: 40px;
+  }
+}
+
+.closing .emblem {
+  animation: emIn 0.52s cubic-bezier(0.3, 1.5, 0.5, 1) forwards;
+}
+.closed .emblem {
+  opacity: 1;
+  transform: scale(1);
+}
+.opening .emblem {
+  animation: emOut 0.3s ease-in forwards;
+}
+@keyframes emIn {
+  0%,
+  75% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes emOut {
+  to {
+    opacity: 0;
+    transform: scale(1.4);
+  }
+}
