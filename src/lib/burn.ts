@@ -1,3 +1,4 @@
+// SI disclosure: written with Claude (Anthropic) under the author's direction; reviewed and tested by the author. See SI_DISCLOSURE.md.
 /**
  * Flame Lab burn model - a TEACHING model, not a certified flammability test.
  *

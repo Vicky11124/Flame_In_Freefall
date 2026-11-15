@@ -1,3 +1,4 @@
+# SI disclosure: written with Claude (Anthropic) under the author's direction; reviewed and tested by the author. See SI_DISCLOSURE.md.
 """
 Normalize NASA PSI combustion-science investigations into two JSON files the app ships with:
 

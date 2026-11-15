@@ -1,3 +1,4 @@
+// SI disclosure: written with Claude (Anthropic) under the author's direction; reviewed and tested by the author. See SI_DISCLOSURE.md.
 import { STATS } from "@/lib/data";
 import s from "./Pipeline.module.css";
 

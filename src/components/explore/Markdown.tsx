@@ -1,3 +1,4 @@
+// SI disclosure: written with Claude (Anthropic) under the author's direction; reviewed and tested by the author. See SI_DISCLOSURE.md.
 "use client";
 
 import { Fragment } from "react";

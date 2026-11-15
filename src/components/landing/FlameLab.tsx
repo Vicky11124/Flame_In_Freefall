@@ -1,7 +1,9 @@
+// SI disclosure: written with Claude (Anthropic) under the author's direction; reviewed and tested by the author. See SI_DISCLOSURE.md.
 "use client";
 
 import { useEffect, useRef, useState } from "react";
 import s from "./FlameLab.module.css";
+import SITag from "@/components/SITag";
 
 /* A stylised, physics-flavoured flame: gravity controls buoyancy (teardrop -> sphere, soot -> blue),
    oxygen controls size/brightness, the cursor blows a concurrent flow across the flame. */
@@ -246,6 +248,7 @@ export default function FlameLab() {
     <div className={s.lab}>
       <canvas ref={canvas} className={s.canvas} aria-label="Interactive flame simulation" />
       {!glOk && <div className={s.fallback} aria-hidden />}
+      <SITag />
 
       <div className={s.hud}>
         <span className="eyebrow">Fig. 01 - Flame lab</span>

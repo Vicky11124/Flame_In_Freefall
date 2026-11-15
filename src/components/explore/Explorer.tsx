@@ -1,3 +1,4 @@
+// SI disclosure: written with Claude (Anthropic) under the author's direction; reviewed and tested by the author. See SI_DISCLOSURE.md.
 "use client";
 
 import Link from "next/link";
@@ -158,7 +159,7 @@ export default function Explorer() {
         <Link href="/" className={s.brand}>
           <Logo size={20} />
           <span>
-            Flame <span className="ital serif">in</span> Freefall
+            Ember <span className="ital serif">Atlas</span>
           </span>
         </Link>
         <nav className={s.tabs} role="tablist">

@@ -1,3 +1,4 @@
+/* SI disclosure: written with Claude (Anthropic) under the author's direction. See SI_DISCLOSURE.md. */
 .app {
   height: 100vh;
   display: flex;
@@ -659,4 +660,9 @@
   .seg4 b {
     font-size: 12px;
   }
+}
+.disclaimer a {
+  color: var(--ember);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }

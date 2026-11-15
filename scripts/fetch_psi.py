@@ -1,3 +1,4 @@
+# SI disclosure: written with Claude (Anthropic) under the author's direction; reviewed and tested by the author. See SI_DISCLOSURE.md.
 """
 Download the public NASA PSI combustion-science metadata and experimental tables into data/raw.
 No login is needed: PSI exposes a JSON API and short-lived signed S3 links.
@@ -12,7 +13,7 @@ API = "https://psi.nasa.gov/geode-py/ws"
 
 
 def get(url):
-    req = urllib.request.Request(url, headers={"User-Agent": "flame-in-freefall/1.0"})
+    req = urllib.request.Request(url, headers={"User-Agent": "ember-atlas/1.0"})
     return urllib.request.urlopen(req, timeout=120).read()
 
 

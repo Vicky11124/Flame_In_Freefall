@@ -1,3 +1,4 @@
+/* SI disclosure: written with Claude (Anthropic) under the author's direction. See SI_DISCLOSURE.md. */
 .wrap {
   display: grid;
   gap: 18px;
@@ -202,4 +203,22 @@
   .form textarea {
     font-size: 16px; /* stops iOS zooming into the field */
   }
+}
+.siLabel {
+  margin: 10px 0 0;
+  padding-top: 8px;
+  border-top: 1px dashed var(--line);
+  font-family: var(--font-mono), monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  color: var(--ink-3);
+}
+.siLabel b {
+  color: var(--ember);
+  font-weight: 500;
+}
+.siLabel a {
+  color: var(--ink-2);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }

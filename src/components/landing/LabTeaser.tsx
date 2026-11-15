@@ -1,3 +1,4 @@
+// SI disclosure: written with Claude (Anthropic) under the author's direction; reviewed and tested by the author. See SI_DISCLOSURE.md.
 import Link from "next/link";
 import { MATERIALS, evaluate } from "@/lib/burn";
 import s from "./LabTeaser.module.css";

@@ -1,3 +1,4 @@
+// SI disclosure: written with Claude (Anthropic) under the author's direction; reviewed and tested by the author. See SI_DISCLOSURE.md.
 "use client";
 
 import Image from "next/image";
@@ -86,7 +87,7 @@ export default function Drawer({
                 <div className={s.img}>
                   <Image src={im.src} alt={im.caption} fill sizes="300px" />
                 </div>
-                <figcaption>{im.caption}</figcaption>
+                <figcaption>{im.caption} · Photo: NASA (real, not SI-generated)</figcaption>
               </figure>
             ))}
           </div>

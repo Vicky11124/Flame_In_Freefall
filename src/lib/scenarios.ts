@@ -1,3 +1,4 @@
+// SI disclosure: written with Claude (Anthropic) under the author's direction; reviewed and tested by the author. See SI_DISCLOSURE.md.
 import type { Phase, Theme } from "./data";
 
 export const PSI_PER_ATM = 14.696;

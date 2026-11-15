@@ -1,3 +1,4 @@
+// SI disclosure: written with Claude (Anthropic) under the author's direction; reviewed and tested by the author. See SI_DISCLOSURE.md.
 /** A flame drawn twice: the 1-g teardrop and the 0-g sphere it becomes. */
 export default function Logo({ size = 22 }: { size?: number }) {
   return (

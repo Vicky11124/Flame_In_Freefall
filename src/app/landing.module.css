@@ -1,3 +1,4 @@
+/* SI disclosure: written with Claude (Anthropic) under the author's direction. See SI_DISCLOSURE.md. */
 .page {
   min-height: 100vh;
 }
@@ -473,4 +474,12 @@
     width: 100%;
     justify-content: center;
   }
+}
+.footLinks {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.footLinks a {
+  color: var(--ink-2);
 }

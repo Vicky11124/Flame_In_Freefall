@@ -1,3 +1,4 @@
+// SI disclosure: written with Claude (Anthropic) under the author's direction; reviewed and tested by the author. See SI_DISCLOSURE.md.
 import Link from "next/link";
 import Image from "next/image";
 import FlameLab from "@/components/landing/FlameLab";
@@ -33,7 +34,7 @@ export default function Landing() {
           <Link href="/" className={s.brand}>
             <Logo />
             <span>
-              Flame <span className="ital serif">in</span> Freefall
+              Ember <span className="ital serif">Atlas</span>
             </span>
           </Link>
           <nav className={s.links}>
@@ -284,9 +285,12 @@ export default function Landing() {
             Data: NASA Physical Sciences Informatics (PSI), CC0. Cite each investigation by its DOI. Built for the 2026 NASA Space Apps
             Challenge, &quot;Flame in Freefall&quot;.
           </span>
-          <a href="https://psi.nasa.gov" target="_blank" rel="noreferrer">
-            psi.nasa.gov ↗
-          </a>
+          <span className={s.footLinks}>
+            <Link href="/si">SI disclosure: built with Claude, analyst by Gemini</Link>
+            <a href="https://psi.nasa.gov" target="_blank" rel="noreferrer">
+              psi.nasa.gov ↗
+            </a>
+          </span>
         </div>
       </footer>
     </main>

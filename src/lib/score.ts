@@ -1,3 +1,4 @@
+// SI disclosure: written with Claude (Anthropic) under the author's direction; reviewed and tested by the author. See SI_DISCLOSURE.md.
 import { investigations, runs, byId, type Investigation, type Phase, type Run } from "./data";
 import { toAtm, type Weights } from "./scenarios";
 

@@ -1,3 +1,4 @@
+// SI disclosure: written with Claude (Anthropic) under the author's direction; reviewed and tested by the author. See SI_DISCLOSURE.md.
 import investigationsJson from "@/data/investigations.json";
 import runsJson from "@/data/runs.json";
 import insightsJson from "@/data/insights.json";

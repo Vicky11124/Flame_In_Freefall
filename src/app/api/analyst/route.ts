@@ -1,3 +1,4 @@
+// SI disclosure: written with Claude (Anthropic) under the author's direction; reviewed and tested by the author. See SI_DISCLOSURE.md.
 import { investigations, insights, byId, label } from "@/lib/data";
 import { coverage } from "@/lib/score";
 
@@ -56,7 +57,7 @@ function buildContext(b: Body) {
 function systemPrompt(b: Body) {
   const { detailed, others, cov } = buildContext(b);
   const s = b.scenario;
-  return `You are the fire-safety analyst inside "Flame in Freefall", a dashboard over NASA's Physical Sciences Informatics (PSI) combustion-science archive. Your users are aerospace engineers, researchers and students.
+  return `You are the fire-safety analyst inside "Ember Atlas", a dashboard over NASA's Physical Sciences Informatics (PSI) combustion-science archive. Your users are aerospace engineers, researchers and students.
 
 SCENARIO the user is designing for: ${s.name}. Atmosphere ${s.o2}% O2 at ${s.psi} psi (${(s.psi / 14.696).toFixed(2)} atm), ventilation ~${s.flow} cm/s, gravity ${s.gravity} g. Materials on board: ${s.focus.join(", ")}.
 
@@ -192,5 +193,5 @@ export async function POST(req: Request) {
       }
     },
   });
-  return new Response(stream, { headers: { "content-type": "text/plain; charset=utf-8", "x-analyst": model } });
+  return new Response(stream, { headers: { "content-type": "text/plain; charset=utf-8", "x-analyst": model, "x-si-generated": "true; Google Gemini" } });
 }

@@ -1,3 +1,4 @@
+// SI disclosure: written with Claude (Anthropic) under the author's direction; reviewed and tested by the author. See SI_DISCLOSURE.md.
 "use client";
 
 import Link from "next/link";
@@ -7,6 +8,7 @@ import { MATERIALS, evaluate, buoyantFlow, type BurnResult } from "@/lib/burn";
 import { byId, label } from "@/lib/data";
 import type { TunnelEngine, Telemetry } from "./TunnelEngine";
 import s from "./FlameLabApp.module.css";
+import SITag from "@/components/SITag";
 
 const O2_PRESETS = [
   { v: 21, l: "Earth" },
@@ -124,7 +126,7 @@ export default function FlameLabApp() {
         <Link href="/" className={s.brand}>
           <Logo size={20} />
           <span>
-            Flame <span className="ital serif">in</span> Freefall
+            Ember <span className="ital serif">Atlas</span>
           </span>
         </Link>
         <span className={s.crumb}>
@@ -143,6 +145,7 @@ export default function FlameLabApp() {
         {/* ---------- stage ---------- */}
         <section className={s.stage}>
           <canvas ref={canvas} className={s.canvas} />
+          <SITag />
 
           <div className={`${s.verdict} ${s[VERDICT_CLASS[result.verdict]]}`}>
             <div className="eyebrow">Prediction · {material.name}</div>
@@ -335,7 +338,8 @@ export default function FlameLabApp() {
             <p className={s.disclaimer}>
               Teaching model, not a flammability certification. Oxygen limits (LOI) come from the literature; flow, gravity and
               pressure trends follow BASS, BASS-II and Saffire. Calibrated to Saffire-II&apos;s measured 2.1-2.6 mm/s for
-              cotton-fiberglass in orbit.
+              cotton-fiberglass in orbit. Model and 3D scene were built with SI assistance (Claude).{" "}
+              <Link href="/si">How SI was used</Link>
             </p>
           </div>
         </aside>

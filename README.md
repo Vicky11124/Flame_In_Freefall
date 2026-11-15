@@ -1,4 +1,4 @@
-# Flame in Freefall
+# Ember Atlas
 
 **AI-assisted fire-safety intelligence from NASA microgravity combustion data.**
 Built for the 2026 NASA Space Apps Challenge: *Flame in Freefall: SI-Powered Fire Safety Insights from Microgravity Combustion Data*.
@@ -67,4 +67,15 @@ Next.js 15 (App Router) · React 19 · TypeScript · three.js wind tunnel · han
 - Data: [NASA Physical Sciences Informatics](https://psi.nasa.gov), CC0. Cite each investigation by its DOI (shown in the app).
 - Images: NASA PSI representative images (ACME, BASS-II, DAFT).
 - The flame simulation is illustrative. Microgravity and 1-g shapes follow ISS imagery; partial gravity is interpolated.
-- AI disclosure: this project was built with AI assistance, and its analyst feature uses Google Gemini.
+- Photos are real NASA images, unmodified and not SI-generated.
+
+## SI disclosure
+
+This project was built with Super Intelligence (SI) tools, as allowed by the NASA Space Apps rules:
+
+- **Code, data pipeline, design and written copy:** developed with **Claude (Anthropic)**, directed, reviewed and tested by the author. Every source file carries a header saying so.
+- **In-app analyst:** answers are generated at request time by **Google Gemini** and labelled "SI-generated" in the app and in downloaded briefings.
+- **Visuals:** no SI image generation. The hero flame and Flame Lab are rendered live by SI-written code and carry an "SI-assisted render" watermark.
+- **NASA branding:** no NASA logos, insignia or design elements are used, generated or modified.
+
+Full breakdown: [SI_DISCLOSURE.md](SI_DISCLOSURE.md), and `/si` on the live site.
